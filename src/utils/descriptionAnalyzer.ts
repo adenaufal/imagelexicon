@@ -80,8 +80,22 @@ export const analyzeDescription = async (description: string): Promise<{
     matchedKeywords.push('masterpiece', 'best quality');
     matchedCategories.add('Image Quality/Technical');
 
+    // Cara manual untuk membuat array unik tanpa Set
+    const uniqueKeywords: string[] = [];
+    for (let i = 0; i < matchedKeywords.length; i++) {
+        if (uniqueKeywords.indexOf(matchedKeywords[i]) === -1) {
+            uniqueKeywords.push(matchedKeywords[i]);
+        }
+    }
+
+    // Konversi Set ke Array secara manual
+    const categoryArray: string[] = [];
+    matchedCategories.forEach((category) => {
+        categoryArray.push(category);
+    });
+
     return {
-        keywords: [...new Set(matchedKeywords)], // Remove duplicates
-        categories: [...matchedCategories]
+        keywords: uniqueKeywords,
+        categories: categoryArray
     };
 };

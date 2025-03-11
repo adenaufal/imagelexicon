@@ -72,6 +72,15 @@ export const getRecommendedKeywords = (selectedKeywords: string[], maxRecommenda
         recommendations.push("masterpiece", "best quality", "detailed", "high quality");
     }
 
-    // Remove duplicates, limit to maxRecommendations
-    return [...new Set(recommendations)].slice(0, maxRecommendations);
+    // Remove duplicates without using Set spread operator
+    const uniqueRecommendations: string[] = [];
+    for (let i = 0; i < recommendations.length; i++) {
+        const recommendation = recommendations[i];
+        if (uniqueRecommendations.indexOf(recommendation) === -1) {
+            uniqueRecommendations.push(recommendation);
+        }
+    }
+
+    // Limit to maxRecommendations
+    return uniqueRecommendations.slice(0, maxRecommendations);
 };
