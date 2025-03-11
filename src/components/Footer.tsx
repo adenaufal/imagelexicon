@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
                 <div className="text-center sm:text-right">
                     <p className="text-gray-600">
                         Contact: <a
-                            href="mailto:ade.naufal@gmail.com
+                            href="mailto:ade.naufal@gmail.com"
                             className="text-blue-600 hover:text-blue-800 hover:underline"
                         >
                             ade.naufal@gmail.com
