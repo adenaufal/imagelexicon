@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/imagelexicon.png" width="300" title="ImageLexicon">
+</p>
+
 # ImageLexicon
 
 A web-based application for generating image prompts for Stable Diffusion and similar AI image generation models.
