@@ -1,13 +1,25 @@
+import characterAttributes from './keywords/character-attributes.json';
+import artists from './keywords/artists.json';
+import visualTheme from './keywords/visual-theme.json';
+import settingEnvironment from './keywords/setting-environment.json';
+import clothingAppearance from './keywords/clothing-appearance.json';
+import physicalFeatures from './keywords/physical-features.json';
+import expressions from './keywords/expressions.json';
+import visualEffects from './keywords/visual-effects.json';
+import poses from './keywords/poses.json';
+import sexualContent from './keywords/sexual-content.json';
+import imageQuality from './keywords/image-quality.json';
+
 export const wordList: Record<string, string[]> = {
-    "Character Attributes": ["1boy", "1girl", "hanako (swimsuit) (blue archive)"],
-    "Artists/Style References": ["enosan", "(shirabi:1.2)", "ishikei", "collagen", "atte nanakusa", "ama_mitsuki", "(mochirong:0.8)"],
-    "Visual Theme": ["white theme", "photorealistic"],
-    "Setting/Environment": ["against glass", "bathroom", "tile wall"],
-    "Clothing/Appearance": ["dress shirt", "naked shirt", "open shirt", "oversized shirt", "white shirt", "clothed female nude male"],
-    "Physical Features": ["blush", "breast press", "breasts on glass", "huge breasts", "large areolae", "navel", "puffy nipples"],
-    "Expressions/Emotions": ["furrowed brow", "looking at another", "open mouth", "heavy breathing"],
-    "Visual Effects": ["dynamic angle", "breath", "condensation", "motion blur", "shiny skin", "wet", "steam", "water", "depth of field", "blurry background"],
-    "Poses/Actions (SFW and NSFW)": ["hand on glass", "cheek press"],
-    "Sexual Content/Actions": ["after vaginal", "penis", "cumdrip", "thigh sex", "cum string", "hetero", "sex from behind", "standing sex", "uncensored"],
-    "Image Quality/Technical": ["modare", "masterpiece", "best quality", "good quality", "newest"]
+    "Character Attributes": characterAttributes,
+    "Artists/Style References": artists,
+    "Visual Theme": visualTheme,
+    "Setting/Environment": settingEnvironment,
+    "Clothing/Appearance": clothingAppearance,
+    "Physical Features": physicalFeatures,
+    "Expressions/Emotions": expressions,
+    "Visual Effects": visualEffects,
+    "Poses/Actions (SFW and NSFW)": poses,
+    "Sexual Content/Actions": sexualContent,
+    "Image Quality/Technical": imageQuality
 };

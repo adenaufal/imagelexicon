@@ -4,6 +4,9 @@ import CategorySelector from './components/CategorySelector';
 import InputSuggestion from './components/InputSuggestion';
 import PromptGenerator from './components/PromptGenerator';
 import PromptDisplay from './components/PromptDisplay';
+import DescriptionInput from './components/DescriptionInput'; // Import the new component
+import KeywordRecommendations from './components/KeywordRecommendations';
+import SelectedKeywordsDisplay from './components/SelectedKeywordsDisplay';
 
 const App: React.FC = () => {
     const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
@@ -16,42 +19,75 @@ const App: React.FC = () => {
         }
     };
 
+    const removeKeyword = (keywordToRemove: string) => {
+        setSelectedKeywords(selectedKeywords.filter(keyword => keyword !== keywordToRemove));
+    };
+
     return (
         <div className="min-h-screen bg-gray-50 py-8">
-            <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
-                <h1 className="text-2xl font-bold text-center mb-6">
-                    ImageLexicon - Prompt Generator
+            <div className="max-w-5xl mx-auto px-4">
+                <h1 className="text-3xl font-bold text-center mb-8">
+                    ImageLexicon
                 </h1>
 
-                <div className="mb-6">
-                    <CategorySelector
-                        selectedCategories={selectedCategories}
-                        setSelectedCategories={setSelectedCategories}
-                    />
+                {/* New Description Input Component */}
+                <DescriptionInput
+                    setSelectedKeywords={setSelectedKeywords}
+                    setSelectedCategories={setSelectedCategories}
+                />
+
+                <div className="bg-white p-5 rounded-lg shadow mb-6">
+                    <h2 className="text-xl font-bold mb-4">
+                        <span className="text-purple-600 mr-2">2</span>Review & Customize
+                    </h2>
+
+                    <div className="mb-4">
+                        <CategorySelector
+                            selectedCategories={selectedCategories}
+                            setSelectedCategories={setSelectedCategories}
+                        />
+                    </div>
+
+                    <div className="mb-4">
+                        <SelectedKeywordsDisplay
+                            selectedKeywords={selectedKeywords}
+                            removeKeyword={removeKeyword}
+                        />
+                    </div>
+
+                    <div className="mb-4">
+                        <KeywordSelector
+                            selectedKeywords={selectedKeywords}
+                            setSelectedKeywords={setSelectedKeywords}
+                            selectedCategories={selectedCategories}
+                        />
+                        <KeywordRecommendations
+                            selectedKeywords={selectedKeywords}
+                            addKeyword={addKeyword}
+                        />
+                    </div>
+
+                    <div className="mb-4">
+                        <InputSuggestion addKeyword={addKeyword} />
+                    </div>
                 </div>
 
-                <div className="mb-6">
-                    <KeywordSelector
-                        selectedKeywords={selectedKeywords}
-                        setSelectedKeywords={setSelectedKeywords}
-                        selectedCategories={selectedCategories}
-                    />
-                </div>
+                <div className="bg-white p-5 rounded-lg shadow mb-6">
+                    <h2 className="text-xl font-bold mb-4">
+                        <span className="text-purple-600 mr-2">3</span>Generate Your Prompt
+                    </h2>
 
-                <div className="mb-6">
-                    <InputSuggestion addKeyword={addKeyword} />
-                </div>
+                    <div className="mb-4">
+                        <PromptGenerator
+                            selectedKeywords={selectedKeywords}
+                            selectedCategories={selectedCategories}
+                            setGeneratedPrompt={setGeneratedPrompt}
+                        />
+                    </div>
 
-                <div className="mb-6">
-                    <PromptGenerator
-                        selectedKeywords={selectedKeywords}
-                        selectedCategories={selectedCategories}
-                        setGeneratedPrompt={setGeneratedPrompt}
-                    />
-                </div>
-
-                <div>
-                    <PromptDisplay generatedPrompt={generatedPrompt} />
+                    <div>
+                        <PromptDisplay generatedPrompt={generatedPrompt} />
+                    </div>
                 </div>
             </div>
         </div>
